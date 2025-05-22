@@ -1,6 +1,7 @@
 import React from "react";
 
-function ListingCard() {
+function ListingCard({ onDelete }) {
+ 
   return (
     <li className="card">
       <div className="image">
@@ -11,11 +12,11 @@ function ListingCard() {
         {true ? (
           <button className="emoji-button favorite active">★</button>
         ) : (
-          <button className="emoji-button favorite">☆</button>
+          <button className="eoji-button favorite">☆</button>
         )}
         <strong>{"description"}</strong>
         <span> · {"location"}</span>
-        <button className="emoji-button delete">🗑</button>
+        <button className="emoji-button delete" onClick={onDelete}>🗑</button>
       </div>
     </li>
   );
