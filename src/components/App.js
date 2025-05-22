@@ -14,25 +14,19 @@ function App() {
 
   function DeleteListing (id) {
     const updatedItems = listings.filter((items) => items.id !== id);
-
-     fetch(`http://localhost:6001/listings{id}`,{
-      Method: 'DELETE',
-      headers: {
-        "Content-Type" : "Aplication/json"
-      }
-    })
     setListings(updatedItems)
   }
 
-  function handleSearch () {
-    const updatedSearch = listings.filter((item) => item.description.toLowerCase().include(search.toLowerCase()))
-    setSearch(updatedSearch)
-  }
+    const updatedListings = listings.filter((listing) => listing.description.toLowerCase().includes(search.toLowerCase()));
+  
 
   return (
     <div className="app">
-      <Header onSearch={handleSearch}/>
-    <ListingsContainer onDelete={DeleteListing}/>
+      <Header onSearch={setSearch}/>
+    <ListingsContainer 
+    onDelete={DeleteListing}
+    listings={updatedListings}
+    />
     </div>
   );
 }
