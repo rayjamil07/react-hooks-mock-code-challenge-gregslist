@@ -9,7 +9,8 @@ As a user:
 Advanced delivrables
 As a user:
 
-1. I can sort thhe listings alphabeticaly by location
+1. I can sort the listings alphabeticaly by location
 2. I can create a new list by submitting a form, and persist the changes to the backend
 
 > Make sure the server is working before anything else
+> Make tests for our components

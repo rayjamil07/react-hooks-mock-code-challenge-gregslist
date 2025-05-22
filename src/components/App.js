@@ -3,16 +3,17 @@ import Header from "./Header";
 import ListingsContainer from "./ListingsContainer";
 
 function App() {
-   const [ data,setData ] = useState([]);
+  const [ listings,setListings ] = useState([]);
+  const [ search,setSearch ] = useState([]);
 
    useEffect(() => {
     fetch('http://localhost:6001/listings')
     .then(response => response.json)
-    .then(data => setData(data.listings))
+    .then((data) => setListings(data.listings))
   },[]);
 
-  function DeleteItem (id) {
-    const updatedItems = data.filter(data => data.id !== id);
+  function DeleteListing (id) {
+    const updatedItems = listings.filter((items) => items.id !== id);
 
      fetch(`http://localhost:6001/listings{id}`,{
       Method: 'DELETE',
@@ -20,13 +21,18 @@ function App() {
         "Content-Type" : "Aplication/json"
       }
     })
-    setData(updatedItems)
+    setListings(updatedItems)
+  }
+
+  function handleSearch () {
+    const updatedSearch = listings.filter((item) => item.description.toLowerCase().include(search.toLowerCase()))
+    setSearch(updatedSearch)
   }
 
   return (
     <div className="app">
-      <Header />
-    <ListingsContainer onDelete={DeleteItem} data={data} setData={setData}/>
+      <Header onSearch={handleSearch}/>
+    <ListingsContainer onDelete={DeleteListing}/>
     </div>
   );
 }

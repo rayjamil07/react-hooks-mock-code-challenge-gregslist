@@ -1,11 +1,17 @@
 import React from "react";
 import ListingCard from "./ListingCard";
 
-function ListingsContainer({ onDelete }) {
+function ListingsContainer() {
   return (
     <main>
       <ul className="cards">
-        <ListingCard onDelete={deleteItem}/>
+      {listings.map((listing) => (
+        <ListingCard
+        key={listings.id}
+        listing={listing}
+        
+        />
+      ))}
       </ul>
     </main>
   );
