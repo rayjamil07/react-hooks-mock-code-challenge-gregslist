@@ -1,9 +1,9 @@
 import React, {useState} from "react";
+import { NewListingForm } from "./NewListingForm";
 
-function ListingCard({
-  listing: { id, image, description, location}, onDelete
-}) {
+function ListingCard({ onDelete, listing, setSortBy, setListings }) {
   const [ favorite, setFavorite ] = useState(false);
+  const { id, image, description, location} = listing;
  
   function handleDeleteClick() {
     fetch(`http://localhost:6001/listings{id}`,{
@@ -11,9 +11,9 @@ function ListingCard({
     headers: {
       "Content-Type" : "Aplication/json"
     }
-  });
-  onDelete(id)
-  }
+  })
+    onDelete(id)
+  };
 
   return (
     <li className="card">
@@ -34,6 +34,11 @@ function ListingCard({
         <strong>{description}</strong>
         <span> · {location}</span>
         <button className="emoji-button delete" onClick={handleDeleteClick}>🗑</button>
+        <NewListingForm
+        setListings={setListings}
+        />
+        <button onClick={() => setSortBy('id')}>Sort By id</button>
+        <button onClick={() => setSortBy('location')}>Sort By Location</button>
       </div>
     </li>
   );

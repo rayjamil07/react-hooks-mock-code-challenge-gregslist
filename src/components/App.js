@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import ListingsContainer from "./ListingsContainer";
 import { NewListingForm } from "./NewListingForm";
-import ListingCard from "./ListingCard";
+// import ListingCard from "./ListingCard";
 
 function App() {
   const [ listings,setListings ] = useState([]);
   const [ search,setSearch ] = useState('');
-  const [ sortBy,setSetBy ] = useState()
+  const [ sortBy,setSortBy ] = useState()
 
    useEffect(() => {
     fetch('http://localhost:6001/listings')
@@ -35,8 +35,7 @@ function App() {
     <ListingsContainer 
     onDelete={DeleteListing}
     listings={updatedListings}
-    />
-    <NewListingForm
+    setSortBy={setSortBy}
     setListings={setListings}
     />
     </div>

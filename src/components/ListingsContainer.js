@@ -1,7 +1,7 @@
 import React from "react";
 import ListingCard from "./ListingCard";
 
-function ListingsContainer({ listings, onDelete }) {
+function ListingsContainer({ listings, onDelete, setListings }) {
   return (
     <main>
       <ul className="cards">
@@ -10,6 +10,7 @@ function ListingsContainer({ listings, onDelete }) {
         key={listings.id}
         listing={listing}
         onDelete={onDelete}
+        setListings={setListings}
         />
       ))}
       </ul>
