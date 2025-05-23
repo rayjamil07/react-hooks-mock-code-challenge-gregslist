@@ -13,4 +13,4 @@ As a user:
 2. I can create a new list by submitting a form, and persist the changes to the backend
 
 > Make sure the server is working before anything else
-> Make tests for our components
+> Make tests for our components (more research is required for this one)
