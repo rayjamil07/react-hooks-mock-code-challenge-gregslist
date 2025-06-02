@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { NewListingForm } from "./NewListingForm";
 
-function ListingCard({ onDelete, listing, setSortBy, setListings }) {
+function ListingCard({ onDelete, listing, setListings }) {
   const [ favorite, setFavorite ] = useState(false);
   const { id, image, description, location} = listing;
  
@@ -37,8 +37,7 @@ function ListingCard({ onDelete, listing, setSortBy, setListings }) {
         <NewListingForm
         setListings={setListings}
         />
-        <button onClick={() => setSortBy('id')}>Sort By id</button>
-        <button onClick={() => setSortBy('location')}>Sort By Location</button>
+       
       </div>
     </li>
   );

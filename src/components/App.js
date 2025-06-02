@@ -11,8 +11,8 @@ function App() {
 
    useEffect(() => {
     fetch('http://localhost:6001/listings')
-    .then(response => response.json)
-    .then((data) => setListings(data.listings))
+    .then(response => response.json())
+    .then((data) => setListings(data))
   },[]);
 
   function DeleteListing (id) {
@@ -24,18 +24,18 @@ function App() {
       if(sortBy === 'id'){
         return listingA.id - listingB.id;
       } else {
-        return listingA.location.localCompare(listingB.location)
+        return listingA.location.localeCompare(listingB.location)
       }
     });
   
 
   return (
     <div className="app">
-      <Header onSearch={setSearch}/>
+      <Header onSearch={setSearch}
+      setSortBy={setSortBy}/>
     <ListingsContainer 
     onDelete={DeleteListing}
     listings={updatedListings}
-    setSortBy={setSortBy}
     setListings={setListings}
     />
     </div>

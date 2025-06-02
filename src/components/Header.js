@@ -1,7 +1,7 @@
 import React from "react";
 import Search from "./Search";
 
-function Header({ onSearch }) {
+function Header({ onSearch, setSortBy }) {
   return (
     <header>
       <h1>
@@ -11,6 +11,8 @@ function Header({ onSearch }) {
         gregslist
       </h1>
       <Search onSearch={onSearch}/>
+       <button onClick={() => setSortBy('id')}>Sort By id</button> 
+       <button onClick={() => setSortBy('location')}>Sort By Location</button>
     </header>
   );
 }

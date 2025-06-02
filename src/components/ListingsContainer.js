@@ -7,7 +7,7 @@ function ListingsContainer({ listings, onDelete, setListings }) {
       <ul className="cards">
       {listings.map((listing) => (
         <ListingCard
-        key={listings.id}
+        key={listing.id}
         listing={listing}
         onDelete={onDelete}
         setListings={setListings}
